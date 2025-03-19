@@ -20,34 +20,30 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 ```
-Models.py 
+Models.py
+
 from django.db import models
 from django.contrib import admin
-# Create your models here.
+class Movie(models.Model):
+    title = models.CharField(max_length=255, help_text="Movie Title")
+    director = models.CharField(max_length=100, help_text="Director Name")
+    release_date = models.DateField(help_text="Release Date")
+    genre = models.CharField(max_length=50, help_text="Movie Genre")
+    rating = models.DecimalField(max_digits=3, decimal_places=1, help_text="Movie Rating (e.g., 8.5)")
+    duration = models.IntegerField(help_text="Duration in Minutes")
 
-class Bank(models.Model):
-    customer_id = models.IntegerField(primary_key=True)
-    customer_name = models.CharField(max_length=50)
-    account_type = models.CharField(max_length=50)
-    loan_amount = models.DecimalField(max_digits=10, decimal_places=2)  
-    monthly_interest = models.DecimalField(max_digits=5, decimal_places=2)  
-    due_date = models.DateField()
+admin.py
+from.models import Movie,MovieAdmin
+admin.site.register(Movie,MovieAdmin)
 
-class Loandetails(admin.ModelAdmin):
-    list_display= ('customer_id','customer_name','account_type','loan_amount','monthly_interest','due_date')
-
-admin.py 
-from django.contrib import admin
-from .models import Bank,Loandetails
-
-# Register your models here.
-admin.site.register(Bank,Loandetails)
 ```
+
+
+
+
 ## OUTPUT
 
-Include the screenshot of your admin page.
-![Image3](https://github.com/user-attachments/assets/9bd2aa9a-f30c-4b9f-b008-a3429706de01)
-![image](https://github.com/user-attachments/assets/8ee2815e-69a0-4ece-8940-3affdc35c55b)
+I![alt text](image.png)
 
 
 ## RESULT
